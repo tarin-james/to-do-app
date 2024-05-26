@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Overview
 
-## Getting Started
 
-First, run the development server:
+This project was made to help increase my knowledge / learn React and how to use a database, as I hadn't done either before now. I have created a web app that acts as a personal to-do list. The user can add and delete items from the list and it will stay populated when the page is left. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The program can be run by loading the files onto your machine and running `npm run dev` in the terminal.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+[Software Demo Video](https://www.youtube.com/watch?v=_GpYTu5xmSQ)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Web Pages
 
-## Learn More
+There is only one page for this web app. It dynamically allows a user to add and delete items from a to-do list. 
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Development Environment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For this project, I used Next.js to access the react framework. The entire program is written in react and uses a database from firebase firestore.
 
-## Deploy on Vercel
+# Useful Websites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+{Make a list of websites that you found helpful in this project}
+* [Firebase](https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=0)
+* [Next js](https://nextjs.org/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Future Work
+
+* Improve look of the site
+* Include user authentication
+* Allow the user to enter more info for each task
