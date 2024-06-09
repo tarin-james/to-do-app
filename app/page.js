@@ -9,7 +9,6 @@ export default function Home() {
   const [items, setItems] = useState([]);
   const session = useSession();
   const userEmail = session?.data?.user?.email;
-  console.log(session);
   useTodoItems(setItems, userEmail);
   function addItems() {
     setItems(["", ...items]);
