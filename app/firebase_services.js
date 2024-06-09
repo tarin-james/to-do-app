@@ -25,10 +25,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export default function useTodoItems(setItems) {
+export default function useTodoItems(setItems, userEmail) {
   // utilizes the useEffect hook to fetch existing database items and update the state based on response
   useEffect(() => {
-    const q = query(collection(db, "to-do-items"));
+    const q = query(collection(db, userEmail));
     getDocs(q).then((querySnap) => {
       const parsedItems = querySnap.docs.map((snap) => {
         return { ...snap.data(), id: snap.id };
@@ -38,14 +38,13 @@ export default function useTodoItems(setItems) {
   }, []);
 }
 
-export function deleteItem(itemId) {
+export function deleteItem(itemId, userEmail) {
   //deletes items from the database
-  deleteDoc(doc(db, "to-do-items", itemId));
+  deleteDoc(doc(db, userEmail, itemId));
 }
 
-export async function addItem(value) {
+export async function addItem(value, userEmail) {
   //adds items to the database
-  const docRef = await addDoc(collection(db, "to-do-items"), { value });
+  const docRef = await addDoc(collection(db, userEmail), { value });
   return docRef.id;
-  
 }

@@ -3,17 +3,21 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useRef, useState } from "react";
 import useTodoItems, { addItem, deleteItem } from "./firebase_services";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Home() {
   const [items, setItems] = useState([]);
-  useTodoItems(setItems);
+  const session = useSession();
+  const userEmail = session?.data?.user?.email;
+  console.log(session);
+  useTodoItems(setItems, userEmail);
   function addItems() {
     setItems(["", ...items]);
   }
   const handleClick = async (i, inputRef) => {
     // when button to add is clicked, this function adds it to the database
     const value = inputRef.current.value;
-    const itemId = await addItem(value);
+    const itemId = await addItem(value, userEmail);
     const itemsCopy = [...items];
     itemsCopy[i] = { id: itemId, value };
     setItems(itemsCopy);
@@ -24,12 +28,24 @@ export default function Home() {
     const itemsCopy = [...items];
     itemsCopy.splice(i, 1);
     setItems(itemsCopy);
-    deleteItem(itemId);
+    deleteItem(itemId, userEmail);
   };
 
   return (
     <main className={styles.main}>
-      <button onClick={addItems}>+</button>
+      <div style={{width: '100%', height: 0}}>
+
+        <button id="auth-butt" style={{ float: "right" , zIndex: 2}} onClick={signOut}>
+          Logout
+        </button>
+      </div>
+      <div>
+        {/* <div style={{display: 'flex'}}> */}
+        <p>To-Do List For {session.data.user.name}</p>
+
+        {/* </div> */}
+        <button onClick={addItems}>+</button>
+      </div>
       {items.map((item, index) => {
         return (
           <Item
@@ -55,12 +71,20 @@ function Item({ item, i, handleDelete, handleClick, id }) {
       {item ? (
         <div className="listedItems">
           {item}
-          <button className='modifyButton' onClick={() => handleDelete(i, id)}> delete</button>
+          <button className="modifyButton" onClick={() => handleDelete(i, id)}>
+            {" "}
+            delete
+          </button>
         </div>
       ) : (
         <div>
           <input ref={inputRef} />
-          <button className='modifyButton' onClick={() => handleClick(i, inputRef)}>Add</button>
+          <button
+            className="modifyButton"
+            onClick={() => handleClick(i, inputRef)}
+          >
+            Add
+          </button>
         </div>
       )}
     </div>

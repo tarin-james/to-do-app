@@ -1,5 +1,10 @@
+main{
+  min-height: calc(113vh - 285px);
+}
+
 body {
   background-color: white;
+  text-align: center;
 }
 
 h1 {
@@ -27,4 +32,8 @@ button:hover {
 
 .listedItems {
   padding: 10px;
+}
+
+#auth-butt {
+  font-size: large;
 }
