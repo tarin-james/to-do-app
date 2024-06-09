@@ -9,7 +9,7 @@ Most recently, I added user authentication, so now instead of one to-do list tha
 
 
 [Software Demo Video - Initial to-do app](https://www.youtube.com/watch?v=_GpYTu5xmSQ)
-[Software Demo Video - User Authentication]()
+[Software Demo Video - User Authentication](https://youtu.be/Emu9TRJMFho)
 
 # Web Pages
 
