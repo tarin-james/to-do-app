@@ -27,6 +27,7 @@ const db = getFirestore(app);
 
 export default function useTodoItems(setItems, userEmail) {
   // utilizes the useEffect hook to fetch existing database items and update the state based on response
+  // now takes in the users email and uses it as the collection name
   useEffect(() => {
     const q = query(collection(db, userEmail));
     getDocs(q).then((querySnap) => {
@@ -40,11 +41,13 @@ export default function useTodoItems(setItems, userEmail) {
 
 export function deleteItem(itemId, userEmail) {
   //deletes items from the database
+  // now takes in the users email and uses it ass the collection name
   deleteDoc(doc(db, userEmail, itemId));
 }
 
 export async function addItem(value, userEmail) {
   //adds items to the database
+  // now takes in the users email and uses it ass the collection name
   const docRef = await addDoc(collection(db, userEmail), { value });
   return docRef.id;
 }

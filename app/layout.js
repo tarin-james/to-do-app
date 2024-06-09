@@ -12,6 +12,7 @@ export default async function RootLayout({ children }) {
 
   const session = await getServerSession(authOptions)
   return (
+    //Run on the server, the header and footer and children are all displayed inside of the session provider
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider session={session}>
